@@ -1,2 +1,1 @@
-# SmartContract-Lottery-project
-Simple smart contract
+This is a simple project that include solidity smart contract.
