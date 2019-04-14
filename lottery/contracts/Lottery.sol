@@ -2,8 +2,8 @@ pragma solidity >=0.4.22 <0.6.0;
 
 contract Lottery{
     address public manager;
-    address payable[] players;
-    
+    address payable[] players;    
+
     modifier onlyManager{
         require(msg.sender == manager, "Wrong calling! Only manager can call the function");
         _;
@@ -14,8 +14,7 @@ contract Lottery{
     }
     
     function enter() public payable{
-        require(msg.value > .01 ether);
-        
+        require(msg.value > .01 ether);        
         players.push(msg.sender);
     }
     
@@ -26,7 +25,7 @@ contract Lottery{
    function pickWinner() public onlyManager{
         uint256 index = random() % players.length;
         players[index].transfer(address(this).balance);
-        players = new address payable[](0);
+        players = new address payable[](0);          
     }
     
     function getPlayers() public view returns(address payable[] memory){
